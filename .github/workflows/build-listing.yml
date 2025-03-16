@@ -32,8 +32,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3 # check out this repo
-      - uses: actions/checkout@v3 # check out template repo
+      - uses: actions/checkout@v4 # check out this repo
+      - uses: actions/checkout@v4 # check out template repo
         with:
           repository: vrchat-community/template-package-listing
           path: ${{env.pathToTemplate}}
@@ -60,13 +60,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5.0.0
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ${{env.listPublishDirectory}}
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4.0.5
